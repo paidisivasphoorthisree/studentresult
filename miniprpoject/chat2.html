@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Generator</title>
+    <style>
+ body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+    .input-container {
+        margin-bottom: 20px;
+    }
+    .result-container {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #000;
+        display: none;
+        text-align: left;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+
+</head>
+<body>
+    <h2 style="color: fuchsia;">Little Hearts High School</h2>
+    <img id="myimage" src="school.png" alt="">
+    <h3>Student Information</h3>
+    <div class="input-container" id="studentInput">
+        <label for="name">Name:</label>
+        <input type="text" id="studentName" placeholder="Enter Student Name"><br>
+        <label for="studentid">Student ID:</label>
+        <input type="text" id="studentID" placeholder="Enter Student ID"><br>
+        <label for="class">Class:</label>
+        <input type="text" id="studentClass" placeholder="Enter Class"><br>
+        <h3 style="color:red;">Student Marks</h3>
+        <label for="telugu">Telugu:</label>
+        <input type="number" id="subject1" ><br>
+        <label for="english">English:</label>
+        <input type="number" id="subject2" ><br>
+        <label for="maths">Maths:</label>
+        <input type="number" id="subject3"><br>
+        <label for="science">Science:</label>
+        <input type="number" id="subject4" ><br>
+        <label for="social">Social Studies:</label>
+        <input type="number" id="subject5" ><br>
+        <button onclick="generateResult()">Generate Result</button>
+    </div>
+    
+    <div class="result-container" id="resultContainer">
+        <h3 style="color: deepskyblue;">Student Result</h3>
+        <p><strong>Name:</strong> <span id="resName"></span></p>
+        <p><strong>Student ID:</strong> <span id="resID"></span></p>
+        <p><strong>Class:</strong> <span id="resClass"></span></p>
+        <p><strong>Telugu:</strong> <span id="resSub1"></span></p>
+        <p><strong>English:</strong> <span id="resSub2"></span></p>
+        <p><strong>Maths:</strong> <span id="resSub3"></span></p>
+        <p><strong>Science:</strong> <span id="resSub4"></span></p>
+        <p><strong>Social studies:</strong> <span id="resSub5"></span></p>
+        <p><strong>Total Marks:</strong> <span id="resTotal"></span></p>
+        <p><strong>Percentage:</strong> <span id="resPercentage"></span></p>
+    </div>
+    
+    <script>
+        function generateResult() {
+            let name = document.getElementById("studentName").value;
+            let studentID = document.getElementById("studentID").value;
+            let studentClass = document.getElementById("studentClass").value;
+            let sub1 = parseFloat(document.getElementById("subject1").value) || 0;
+            let sub2 = parseFloat(document.getElementById("subject2").value) || 0;
+            let sub3 = parseFloat(document.getElementById("subject3").value) || 0;
+            let sub4 = parseFloat(document.getElementById("subject4").value) || 0;
+            let sub5 = parseFloat(document.getElementById("subject5").value) || 0;
+            
+            let total = sub1 + sub2 + sub3 + sub4 + sub5;
+            let percentage = ((total / 500) * 100).toFixed(2) + "%";
+            
+            document.getElementById("resName").textContent = name;
+            document.getElementById("resID").textContent = studentID;
+            document.getElementById("resClass").textContent = studentClass;
+            document.getElementById("resSub1").textContent = sub1;
+            document.getElementById("resSub2").textContent = sub2;
+            document.getElementById("resSub3").textContent = sub3;
+            document.getElementById("resSub4").textContent = sub4;
+            document.getElementById("resSub5").textContent = sub5;
+            document.getElementById("resTotal").textContent = total;
+            document.getElementById("resPercentage").textContent = percentage;
+            
+            document.getElementById("resultContainer").style.display = "block";
+
+        }
+    </script>
+</body>
+</html>
